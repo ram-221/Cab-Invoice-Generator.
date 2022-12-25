@@ -22,13 +22,19 @@ public class CabInvoiceGenerator {
 		return totalFare;
 
 	}
+	
+	public  InvoiceSummary getInvoiceSummary(Ride[] rides) {
+		double totalFare = calculateFare(rides);
+		int numOfRides = rides.length;
+		return new InvoiceSummary(numOfRides, totalFare);
+	}
 
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 
 		CabInvoiceGenerator cab = new CabInvoiceGenerator();
 		System.out.println(cab.calculateFare(0.3, 1));
 
-	}
+	}*/
 
 
 

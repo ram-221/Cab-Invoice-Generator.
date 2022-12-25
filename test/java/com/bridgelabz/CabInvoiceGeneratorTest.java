@@ -4,7 +4,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class CabInvoiceGeneratorTest {
-
+	
+	
 	@Test
 	public void givenDistanceAndTime_ShouldReturnTotalFare() {
 		CabInvoiceGenerator cabInvoice = new CabInvoiceGenerator();
@@ -30,4 +31,13 @@ public class CabInvoiceGeneratorTest {
 		double fare = cabInvoice.calculateFare(rides);
 		Assertions.assertEquals(109, fare);
 	}
+	
+	 @Test
+	    public void givenMultipleRidesShouldReturnRideSummary() {
+		 CabInvoiceGenerator cabInvoice = new CabInvoiceGenerator();
+	        Ride[] rides = { new Ride(2.0, 5), new Ride(0.1, 1) };
+	        InvoiceSummary summary = cabInvoice.getInvoiceSummary(rides) ;
+	        InvoiceSummary expectedSummary = new InvoiceSummary(2, 30.0);
+	        Assertions.assertEquals(expectedSummary, summary);
+	 }
 }
